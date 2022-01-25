@@ -42,6 +42,7 @@ Try our QuickStart https://porter.sh/quickstart to learn how to use Porter.
 * [porter bundles install](/cli/porter_bundles_install/)	 - Create a new installation of a bundle
 * [porter bundles invoke](/cli/porter_bundles_invoke/)	 - Invoke a custom action on an installation
 * [porter bundles lint](/cli/porter_bundles_lint/)	 - Lint a bundle
+* [porter bundles publish](/cli/porter_bundles_publish/)	 - Publish a bundle
 * [porter bundles uninstall](/cli/porter_bundles_uninstall/)	 - Uninstall an installation
 * [porter bundles upgrade](/cli/porter_bundles_upgrade/)	 - Upgrade an installation
 

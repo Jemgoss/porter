@@ -19,6 +19,7 @@ func buildBundleExplainCommand(p *porter.Porter) *cobra.Command {
   porter bundle explain --file another/porter.yaml
   porter bundle explain --cnab-file some/bundle.json
   porter bundle explain --action install
+  porter bundle explain --custom -o json
 		  `,
 		PreRunE: func(cmd *cobra.Command, args []string) error {
 			return opts.Validate(args, p.Context)
@@ -33,6 +34,7 @@ func buildBundleExplainCommand(p *porter.Porter) *cobra.Command {
 	f.StringVarP(&opts.RawFormat, "output", "o", "plaintext",
 		"Specify an output format.  Allowed values: plaintext, json, yaml")
 	f.StringVar(&opts.Action, "action", "", "Hide parameters and outputs that are not used by the specified action.")
+	f.BoolVar(&opts.Custom, "custom", false, "Output the custom properties of the bundle file. Must supply -o [yaml|json].")
 	addBundlePullFlags(f, &opts.BundlePullOptions)
 
 	return &cmd

@@ -24,6 +24,7 @@ porter bundles explain [flags]
   porter bundle explain --file another/porter.yaml
   porter bundle explain --cnab-file some/bundle.json
   porter bundle explain --action install
+  porter bundle explain --custom -o json
 		  
 ```
 
@@ -32,6 +33,7 @@ porter bundles explain [flags]
 ```
       --action string       Hide parameters and outputs that are not used by the specified action.
       --cnab-file string    Path to the CNAB bundle.json file.
+      --custom              Output the custom properties of the bundle file. Must supply -o [yaml|json].
   -f, --file porter.yaml    Path to the Porter manifest. Defaults to porter.yaml in the current directory.
       --force               Force a fresh pull of the bundle
   -h, --help                help for explain

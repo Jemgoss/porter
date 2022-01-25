@@ -20,6 +20,7 @@ type ExplainOpts struct {
 	printer.PrintOptions
 
 	Action string
+	Custom bool
 }
 
 // PrintableBundle holds a subset of pertinent values to be explained from a bundle
@@ -158,6 +159,23 @@ func (p *Porter) Explain(ctx context.Context, o ExplainOpts) error {
 	bundleRef, err := p.resolveBundleReference(ctx, &o.BundleActionOptions)
 	if err != nil {
 		return err
+	}
+
+	// Print Bundle Details
+	if o.Custom {
+		// localBundle, err = p.ensureLocalBundleIsUpToDate(ctx, o.bundleFileOptions)
+		// if err != nil {
+		// 	return err
+		// }
+	
+		switch o.Format {
+		case printer.FormatJson:
+			return printer.PrintJson(p.Out, bundleRef.Definition.Custom)
+		case printer.FormatYaml:
+			return printer.PrintYaml(p.Out, bundleRef.Definition.Custom)
+		default:
+			return fmt.Errorf("invalid format: %s", o.Format)
+		}
 	}
 
 	pb, err := generatePrintable(bundleRef.Definition, o.Action)
