@@ -143,6 +143,9 @@ func (ex *exporter) export() error {
 	tarOptions := &archive.TarOptions{
 		Compression:      archive.Gzip,
 		IncludeFiles:     []string{"."},
+		// FIXME: try to persuade TarWithOptions() to place ./bundle.json before ./artifacts.
+		// This does not achieve the desired result (get bundle.json,artifacts/ instead of ./bundle.json,./artifacts/)
+		//IncludeFiles:     []string{"./bundle.json", "./artifacts"},
 		IncludeSourceDir: true,
 	}
 	rc, err := archive.TarWithOptions(archiveDir, tarOptions)
